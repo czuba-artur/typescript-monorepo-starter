@@ -5,7 +5,7 @@ services:
       dockerfile: ./api/Dockerfile
       target: development
     volumes:
-      - ./api:/app/api
+      - ./api/src:/app/api/src
       - ./shared:/app/shared
     ports:
       - '3001:3000'
@@ -16,7 +16,8 @@ services:
       dockerfile: ./web/Dockerfile
       target: development
     volumes:
-      - ./web:/app/web
+      - ./web/src:/app/web/src
+      - ./web/public:/app/web/public
       - ./shared:/app/shared
     ports:
       - '3000:3000'

@@ -16,6 +16,7 @@ FROM base AS development
 WORKDIR /app/api
 
 COPY --from=deps /app/api/node_modules /app/api/node_modules
+COPY ./api .
 
 CMD ["npm", "run", "dev"]
 
