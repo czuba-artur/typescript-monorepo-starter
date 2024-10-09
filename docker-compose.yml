@@ -1,0 +1,24 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: ./api/Dockerfile
+      target: development
+    volumes:
+      - ./api:/app/api
+      - ./shared:/app/shared
+    ports:
+      - '3001:3000'
+
+  web:
+    build:
+      context: .
+      dockerfile: ./web/Dockerfile
+      target: development
+    volumes:
+      - ./web:/app/web
+      - ./shared:/app/shared
+    ports:
+      - '3000:3000'
+    depends_on:
+      - api
